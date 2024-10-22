@@ -52,6 +52,7 @@ function editTask(e) {
     e.target.replaceWith(saveBtn);
 }
 
+
 function saveTask(inputField, taskItem) {
     let newTaskText = document.createTextNode(inputField.value);  // Create new text node with the edited value
     taskItem.insertBefore(newTaskText, inputField);  // Insert the new text before the input field
@@ -63,3 +64,22 @@ function saveTask(inputField, taskItem) {
     editBtn.addEventListener('click', editTask);
     taskItem.querySelector('button').replaceWith(editBtn);  // Replace Save with Edit
 }
+
+function deleteTask(e) {
+    // Remove the task
+    let taskToDelete = e.target.parentElement;
+    taskToDelete.remove();
+}
+
+// Function to clear all tasks
+function clearAllTasks() {
+    let taskList = document.getElementById('task-list');
+    
+    // Remove all child elements (tasks) from the task list
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+}
+
+// Attach event listener to the Clear All button
+document.getElementById('clear-all').addEventListener('click', clearAllTasks);
