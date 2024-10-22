@@ -43,3 +43,16 @@ function deleteTask(e) {
     let taskToDelete = e.target.parentElement;
     taskToDelete.remove();
 }
+
+// Function to clear all tasks
+function clearAllTasks() {
+    let taskList = document.getElementById('task-list');
+    
+    // Remove all child elements (tasks) from the task list
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+}
+
+// Attach event listener to the Clear All button
+document.getElementById('clear-all').addEventListener('click', clearAllTasks);
